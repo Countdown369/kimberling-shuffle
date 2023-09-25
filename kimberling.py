@@ -8,6 +8,7 @@ This is a temporary script file.
 import numpy as np
 import pandas as pd
 import math
+import time
 
 pd.set_option('display.max_columns', 2000)
 
@@ -149,6 +150,7 @@ def genNextRILO(inrow, stage):
             nextrow.append(y)
         return(nextrow)
 
+# Maximum stage ~ 0.333347(numlim)+0.528058
 def generate(numlim, stagelim, form):
     rows = []
     rows.append(list(np.linspace(1, numlim, num=numlim)))
@@ -190,6 +192,39 @@ def orbit(kimberling, value):
 def diagonal(kimberling):
     return np.diag(kimberling)
 
-df = pd.DataFrame(generate(100,8, 'RILO'))
-df.columns += 1
-print(diagonal(df))
+# from https://oeis.org/A035486
+def K(i, j):
+    if j >= 2*i-3: return i+j-1
+    q, r = divmod(j+1, 2)
+    return K(i-1, i-1+(1-2*r)*q)
+
+# from https://oeis.org/wiki/User:Enrique_P%C3%A9rez_Herrero/Kimberling
+def L(n):
+    i = math.floor((n+4)/3)
+    j = math.floor((2*n + 1)/3)
+    while (i!=j):
+        j = max(2*(i - j), 2*(j - i) - 1)
+        i = i + 1
+    return i
+
+#------------------------------------------------------------------------------
+print(K(25, 25))
+print(L(2))
+
+
+# start = time.time()
+# rows = generate(10000,3334, 'RILI')
+# middle= time.time()
+# print(middle - start)
+# df = pd.DataFrame(rows)
+# df.columns += 1
+# df.rows += 1
+# df.to_csv('RILI_10000.csv')
+# end = time.time()
+# print(end - middle)
+    
+# df = pd.DataFrame(rows)
+# df.columns += 1
+# print(diagonal(df))
+# print()
+# print(orbit(rows, 17))
