@@ -213,82 +213,80 @@ def L(n):
 
 #------------------------------------------------------------------------------
 
-# print(K(25, 25))
-# for i in range(1,10):
-#     print(L(i))
-#     print(orbit(generate(25, 'RILI'),i))
-
-# RED BROWN YELLOW!
+""""RED BROWN YELLOW?"""
 # for i in range(1,10):
 #     print([3*i - 4, 3*i - 3, 3*i - 2])
 
+"""NEW FAMILIES"""
+# kimberling1 = generate(3100, 'RILI')
 
-"""
+# fifteen_orbit = orbit(kimberling1, 15)
+# fifteen_res = [fifteen_orbit[i + 1] - fifteen_orbit[i] for i in range(len(fifteen_orbit)-1)]
+# fortytwo_orbit = orbit(kimberling1, 42)
+# fortytwo_res = [fortytwo_orbit[i + 1] - fortytwo_orbit[i] for i in range(len(fortytwo_orbit)-1)]
+# print(15)
+# print(fifteen_res)
+# print()
+# print(42)
+# print(fortytwo_res)
 
-# print(orbit(generate(10000, 3334, 'RILI'),20))
-# print(orbit(generate(10000, 3334, 'RILI'),53))
+# ten_orbit = orbit(kimberling1, 10)
+# ten_res = [ten_orbit[i + 1] - ten_orbit[i] for i in range(len(ten_orbit)-1)]
+# thirtyone_orbit = orbit(kimberling1, 31)
+# thirtyone_res = [thirtyone_orbit[i + 1] - thirtyone_orbit[i] for i in range(len(thirtyone_orbit)-1)]
+# print(10)
+# print(ten_res)
+# print()
+# print(31)
+# print(thirtyone_res)
 
-# These numbers, when do they get expelled? They have a long run of decreasing
-# by 1, and then very soon after (how soon after?), they are expelled.
+# # FAMILY 2: 15*2^k - 3k - 12
+# # https://oeis.org/A134062 is orbit movement outside of the upper array (res)
 
-# print(orbit(generate(10000, 3334, 'RILI'),122))
-# print(generate(30, 5, 'LORO'))
-"""
-# start=time.time()
-# thething = orbit(generate(49600, 'RILI'),19)
-# print(max(thething))
-# print(thething.index(max(thething)))
-# end=time.time()
-# print(end - start)
+# for i in range(456,1002, 3):
+#     print(i)
+#     epic = orbit(kimberling1, i)
+#     epic_res = [epic[i + 1] - epic[i] for i in range(len(epic)-1)]
+#     if epic_res[len(epic_res)-1] == -158:
+#         epic2 = orbit(kimberling1, i+3)
+#         epic_res2 = [epic2[i + 1] - epic2[i] for i in range(len(epic2)-1)]
+#         print(epic_res)
+#         print()
+#         print(i+3)
+#         print(epic_res2)
 
-kimberling1 = generate(3100, 'RILI')
+#         break
+#     else:
+#         print("Failed")
+#         print()
 
-fifteen_orbit = orbit(kimberling1, 15)
-fifteen_res = [fifteen_orbit[i + 1] - fifteen_orbit[i] for i in range(len(fifteen_orbit)-1)]
-fortytwo_orbit = orbit(kimberling1, 42)
-fortytwo_res = [fortytwo_orbit[i + 1] - fortytwo_orbit[i] for i in range(len(fortytwo_orbit)-1)]
-ninetynine_orbit = orbit(kimberling1, 99)
-ninetynine_res = [ninetynine_orbit[i + 1] - ninetynine_orbit[i] for i in range(len(ninetynine_orbit)-1)]
-twosixteen_orbit = orbit(kimberling1, 216)
-twosixteen_res = [twosixteen_orbit[i + 1] - twosixteen_orbit[i] for i in range(len(twosixteen_orbit)-1)]
-fourfiftythree_orbit = orbit(kimberling1, 453)
-fourfiftythree_res = [fourfiftythree_orbit[i + 1] - fourfiftythree_orbit[i] for i in range(len(fourfiftythree_orbit)-1)]
-print(15)
-print(fifteen_res)
-print()
-print(42)
-print(fortytwo_res)
-print()
-print(99)
-print(ninetynine_res)
-print()
-print(216)
-print(twosixteen_res)
-print()
-print(453)
-print(fourfiftythree_res)
-print()
+# # FAMILY 3: 12*2^k - 3k - 11
+# # https://oeis.org/A095121 is orbit movement outside of the upper array (res)
 
-#UNCOIMMENT THIS AFTER TALKING TO DAVID
-#FAMILY 2: 15*2^k - 3k - 12
-for i in range(456,1002, 3):
-    print(i)
-    epic = orbit(kimberling1, i)
-    epic_res = [epic[i + 1] - epic[i] for i in range(len(epic)-1)]
-    if epic_res[len(epic_res)-1] == -158:
-        epic2 = orbit(kimberling1, i+3)
-        epic_res2 = [epic2[i + 1] - epic2[i] for i in range(len(epic2)-1)]
-        print(epic_res)
-        print()
-        print(i+3)
-        print(epic_res2)
+# for i in range (172,454,3):
+    # # print(i)
+    # # orby = orbit(generate(100, 'RILI'),i)
+    # # print([orby[i + 1] - orby[i] for i in range(len(orby)-1)])
+    # # print()
+    
+    # print(i)
+    # epic = orbit(kimberling1, i)
+    # epic_res = [epic[i + 1] - epic[i] for i in range(len(epic)-1)]
+    # if epic_res[len(epic_res)-1] == -126:
+    #     epic2 = orbit(kimberling1, i+3)
+    #     epic_res2 = [epic2[i + 1] - epic2[i] for i in range(len(epic2)-1)]
+    #     print(epic_res)
+    #     print()
+    #     print(i+3)
+    #     print(epic_res2)
         
-        break
-    else:
-        print("Failed")
-        print()
+    #     break
+    # else:
+    #     print("Failed")
+    #     print()
 
 
+"""RESEARCH ON FAMILY (GUY)"""
 def perfectlyExpelledFamily():
     # Family 9*2^k - 3k - 10
     
@@ -316,37 +314,22 @@ def perfectlyExpelledFamily():
     # if "expelled perfectly", it will be expelled on row
     # floor((1/3)*(row + 1.5)) + 1. And Herrero's formula is equivalent!
 
-
-# print(generate(4, 'RILI'))
-
-# ceil to (x+2)/2
-
-# start = time.time()
-# rows = generate(5, 'RILI')
-# middle= time.time()
-# for i in range(len(rows)):
-#     print(rows[i][i])
-"""
+"""TO CSV"""
 # df = pd.DataFrame(rows)
 # df.columns += 1
 # df.rows += 1
 # df.to_csv('RILI_10000.csv')
 # end = time.time()
 # print(end - middle)
-    
+  
+"""USE OF DIAGONAL FUCTION"""  
 # df = pd.DataFrame(rows)
 # df.columns += 1
 # print(diagonal(df))
 # print()
 # print(orbit(rows, 17))
-"""
 
-# epic = generate(10, 4, 'LORO')
-# print(epic)
-# perfectlyExpelledFamily()
 
-# for i in range(len(epic)):
-#     print(epic[i][0])
-
-# in class - bound by triangular numbers (quadratic) 
+"IN CLASS PRESENTATION #2 NOTES" 
+# bound by triangular numbers (quadratic) 
 # bound? 2n + 1 + n for expelled number for row n
